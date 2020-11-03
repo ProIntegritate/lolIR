@@ -6,7 +6,7 @@ mkdir prefetch
 cls
 echo --------------------------------------------------------------------------------
 echo LOLIR - Living Of the Land Incident Response - run as admin for more detail.
-echo Last updated 20:17 2020-11-03
+echo Last updated 17:57 2020-11-03
 echo --------------------------------------------------------------------------------
 echo * Logs: Security log requires admin rights (SecurityPrivilege)
 echo * Logs: System log
