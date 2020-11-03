@@ -16,12 +16,14 @@ echo * Logs: Setup log
 start /b wevtutil qe security >%date%_log.security.txt 
 start /b wevtutil qe system >%date%_log.system.txt 
 start /b wevtutil qe application >%date%_log.application.txt 
+start /b wevtutil qe setup >%date%_log.setup.txt 
 
 timeout 1 >nul
 
 start /b wevtutil epl security %date%_log.security.evtx
 start /b wevtutil epl system %date%_log.system.evtx
 start /b wevtutil epl application %date%_log.application.evtx
+start /b wevtutil epl setup > %date%_log.setup.evtx
 
 timeout 1 >nul
 
