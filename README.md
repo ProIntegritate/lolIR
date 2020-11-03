@@ -37,7 +37,7 @@ And lolIR was born. This is basically an *"i'm bored and want to do something"*-
 * Groups
 * Shares
 
-Some of these are information only, i.e. no parsing is done of shadow storage but it reports if storage is still intact, and some files need to be investigated, like prefetch and repository.
+Some of these are information only, i.e. no parsing is done of shadow storage but it reports if storage is still intact, and some files need to be parsed separately, like prefetch files and repository.
 
 Runs quite fast, many thing are started in parallel so it takes from 30 to 10 seconds depending on your system performance.
 
