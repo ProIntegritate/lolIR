@@ -6,7 +6,7 @@ mkdir prefetch
 cls
 echo --------------------------------------------------------------------------------
 echo LOLIR - Living Of the Land Incident Response - run as admin for more detail.
-echo Last updated 17:57 2020-11-03
+echo Last updated 01:08 2020-11-06
 echo --------------------------------------------------------------------------------
 echo * Logs: Security log requires admin rights (SecurityPrivilege)
 echo * Logs: System log
@@ -23,7 +23,7 @@ timeout 1 >nul
 start /b wevtutil epl security %date%_log.security.evtx
 start /b wevtutil epl system %date%_log.system.evtx
 start /b wevtutil epl application %date%_log.application.evtx
-start /b wevtutil epl setup > %date%_log.setup.evtx
+start /b wevtutil epl setup %date%_log.setup.evtx
 
 timeout 1 >nul
 
@@ -42,7 +42,8 @@ echo * Dump DNS Cache Powershell
 powershell -c "Get-DnsClientCache | Format-List" >%date%_dnsCache.ps.txt
 
 echo * Kerberos sessions
-klist sessions >%date%_kerberos.session.tickets.txt
+klist sessions >%date%_kerberos.session.tickets.klist.txt
+powershell -c "gwmi win32_LogonSession" >%date%_kerberos.session.tickets.ps.txt
 
 echo * Current processes (List)
 tasklist /FO LIST > %date%_processes.short.txt
@@ -71,7 +72,7 @@ echo * Repository (objects.dat)
 copy C:\Windows\System32\wbem\Repository\OBJECTS.DATA %date%_repository.objects.data >nul
 
 echo * Prefetch
-copy c:\windows\prefetch\*.pf prefetch >nul
+copy c:\windows\prefetch\*.pf prefetch  >nul
 
 echo * Firewall
 netsh advfirewall firewall show rule name=all >%date%_firewall.txt
@@ -83,7 +84,7 @@ echo * Temp
 attrib %temp%\*.exe /s | find /i ".exe" >%date%_temp.exe.txt
 
 echo * Hosts
-copy c:\Windows\System32\drivers\etc\hosts %date%_hosts.txt
+copy c:\Windows\System32\drivers\etc\hosts %date%_hosts.txt >nul
 
 echo * Environment
 set > %date%_environment.txt
@@ -102,6 +103,9 @@ echo * Groups (Requires Workstation Service running)
 net localgroup > %date%_net.localgroup.txt
 echo * Shares (Requires Server Service running)
 echo n | net share > %date%_net.shares.txt
+
+rem echo * Filesystem (Can take a VERY long time, uncomment to activate)
+rem dir \*.* /s >%date_filesystem.txt
 
 cd ..
 echo --------------------------------------------------------------------------------
