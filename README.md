@@ -36,6 +36,7 @@ And lolIR was born. This is basically an *"i'm bored and want to do something"*-
 * Mapped Drives
 * Groups
 * Shares
+* SecEdit configuration
 
 Some of these are information only, i.e. no parsing is done of shadow storage but it reports if storage is still intact, and some files need to be parsed separately, like prefetch files and repository.
 
