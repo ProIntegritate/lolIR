@@ -84,8 +84,9 @@ netsh advfirewall firewall show rule name=all >%date%_firewall.txt
 echo * Startup
 wmic startup list /format:csv >%date%_startup.txt
 
-echo * Temp
-attrib %temp%\*.exe /s | find /i ".exe" >%date%_temp.exe.txt
+echo * Executables in world/user writeable, non-standard locations.
+attrib c:\ProgramData\*.exe /s | find /i ".exe" > %date%_folder-programdata.exe.log
+attrib c:\users\*.exe /s | find /i ".exe" > %date%_folder-users.exe.log
 
 echo * Hosts
 copy c:\Windows\System32\drivers\etc\hosts %date%_hosts.txt >nul
