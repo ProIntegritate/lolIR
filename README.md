@@ -38,6 +38,13 @@ And lolIR was born. This is basically an *"i'm bored and want to do something"*-
 * Shares
 * SecEdit configuration
 
+Latest version (2025) also include these source:
+* WiFi config
+* Log source: Bitsclient (Text and EVTX)
+* Log source: TerminalServer: Remote, Local and RDPClient (Text and EVTX)
+* Log source: TaskSheduler (Text and EVTX)
+* User "recent" folders (zipped)
+
 Some of these are information only, i.e. no parsing is done of shadow storage but it reports if storage is still intact, and some files need to be parsed separately, like prefetch files and repository.
 
 Runs quite fast, many thing are started in parallel so it takes from 30 to 10 seconds depending on your system performance.
