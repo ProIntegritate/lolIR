@@ -210,7 +210,7 @@ powershell.exe -c "Get-CimInstance Win32_product | Export-Csv %computername%_ins
 
 echo * User Recent files (all user folders)
 for /f %%f in ('dir /B /AD %public%\..') do (
-		echo %public%\..\%%f\AppData\Roaming\Microsoft\Windows\Recent\
+	echo %public%\..\%%f\AppData\Roaming\Microsoft\Windows\Recent\
 	powershell -c "Compress-Archive -CompressionLevel Optimal -Path C:\Users\%%f\AppData\Roaming\Microsoft\Windows\Recent\ -DestinationPath %computername%_recent_%%f.zip" > nul
 )
 
