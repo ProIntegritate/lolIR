@@ -37,16 +37,16 @@ echo * Logs: TaskScheduler/Operational log
 start /b wevtutil qe /f:text Microsoft-Windows-TaskScheduler/Operational > %computername%_taskscheduler.operational.log
 
 echo * Logs: BitsClient/Operational log 
-start /b wevtutil qe Microsoft-Windows-Bits-Client/Operational > %computername%_bitsclient.operational.log
+start /b wevtutil qe /f:text Microsoft-Windows-Bits-Client/Operational > %computername%_bitsclient.operational.log
 
 echo * Logs: TerminalServices-LocalSessionManager log 
-start /b wevtutil qe Microsoft-Windows-TerminalServices-LocalSessionManager/Operational > %computername%_Term.Local.operational.log
+start /b wevtutil qe /f:text Microsoft-Windows-TerminalServices-LocalSessionManager/Operational > %computername%_Term.Local.operational.log
 
 echo * Logs: TerminalServices-RemoteConnectionManager log 
-start /b wevtutil qe Microsoft-Windows-TerminalServices-RemoteConnectionManager/Operational > %computername%_Term.Remote.operational.log
+start /b wevtutil qe /f:text Microsoft-Windows-TerminalServices-RemoteConnectionManager/Operational > %computername%_Term.Remote.operational.log
 
 echo * Logs: TerminalServices-RDPClient/Operational log 
-start /b wevtutil qe Microsoft-Windows-TerminalServices-RDPClient/Operational > %computername%_Term.RDPClient.operational.log
+start /b wevtutil qe /f:text Microsoft-Windows-TerminalServices-RDPClient/Operational > %computername%_Term.RDPClient.operational.log
 
 timeout 10
 
