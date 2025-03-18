@@ -1,3 +1,12 @@
+.____          .____    ._____________ 
+|    |    ____ |    |   |   \______   \
+|    |   /  _ \|    |   |   ||       _/
+|    |__(  <_> )    |___|   ||    |   \
+|_______ \____/|_______ \___||____|_  /
+        \/             \/           \/ 
+
+QUICKSTART: Get and use the "LOLIR_2025.bat" file. The other one is just there for other reasons (as in creation time timestamp).
+
 # lolIR
 **lolIR - Living Of the Land Incident Response**
 
@@ -46,6 +55,16 @@ Latest version (2025) also include these source:
 * Log source: TerminalServer: Remote, Local and RDPClient (Text and EVTX)
 * Log source: TaskSheduler (Text and EVTX)
 * User "recent" folders (zipped)
+* WMI
+* WDI
+* Setupapi
+* Repository (Now the entire folder)
+* Logsource: dhcp+dhcp6
+* Logsource: Advfirewall
+* Logsource: Defender
+* Logsource: Laps
+* Logsource: HyperV
+* Logsource: WinRM
 
 Some of these are information only, i.e. no parsing is done of shadow storage but it reports if storage is still intact, and some files need to be parsed separately, like prefetch files and repository.
 
