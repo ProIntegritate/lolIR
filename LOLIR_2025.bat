@@ -48,6 +48,29 @@ start /b wevtutil qe /f:text Microsoft-Windows-TerminalServices-RemoteConnection
 echo * Logs: TerminalServices-RDPClient/Operational log 
 start /b wevtutil qe /f:text Microsoft-Windows-TerminalServices-RDPClient/Operational > %computername%_Term.RDPClient.operational.log
 
+echo * Logs: LAPS
+start /b wevtutil qe /f:text Microsoft-Windows-Laps/Operational > %computername%_laps.operational.log
+
+echo * Logs: DHCP+DHCP6
+start /b wevtutil qe /f:text Microsoft-Windows-Dhcp-Client/Admin > %computername%_dhcpclient.admin.log
+start /b wevtutil qe /f:text Microsoft-Windows-DHCP-Client/Operational > %computername%_dhcpclient.operational.log
+start /b wevtutil qe /f:text Microsoft-Windows-DHCPv6-Client/Admin > %computername%_dhcpclient6.admin.log
+start /b wevtutil qe /f:text Microsoft-Windows-DHCPv6-Client/Operational > %computername%_dhcpclient6.operational.log
+
+echo * Logs: Defender
+start /b wevtutil qe /f:text "Microsoft-Windows-Windows Defender/Operational" > %computername%_defender.operational.log
+
+echo * Logs: AdvFirewall
+start /b wevtutil qe /f:text "Microsoft-Windows-Windows Firewall With Advanced Security/Firewall" > %computername%_advfirewall.firewall.log
+start /b wevtutil qe /f:text "Microsoft-Windows-Windows Firewall With Advanced Security/FirewallVerbose" > %computername%_advfirewall.firewallverbose.log
+
+echo * Logs: Hyper-V
+start /b wevtutil qe /f:text Microsoft-Windows-Hyper-V-Hypervisor-Admin > %computername%_hyperv.admin.log
+start /b wevtutil qe /f:text Microsoft-Windows-Hyper-V-Hypervisor-Operational > %computername%_hyperv.operational.log
+
+echo * Logs: WinRM
+start /b wevtutil qe /f:text Microsoft-Windows-WinRM/Operational > %computername%_winrm.operational.log
+
 timeout 10
 
 echo * Dumping .evtx files of the same sources (above).
@@ -62,6 +85,17 @@ start /b wevtutil epl Microsoft-Windows-Bits-Client/Operational %computername%_l
 start /b wevtutil epl Microsoft-Windows-TerminalServices-LocalSessionManager/Operational %computername%_log.Term.Local.evtx
 start /b wevtutil epl Microsoft-Windows-TerminalServices-RemoteConnectionManager/Operational %computername%_log.Term.Remote.evtx
 start /b wevtutil epl Microsoft-Windows-TerminalServices-RDPClient/Operational %computername%_log.Term.RDPClient.evtx
+start /b wevtutil epl Microsoft-Windows-Laps/Operational %computername%_laps.operational.evtx
+start /b wevtutil epl Microsoft-Windows-Dhcp-Client/Admin %computername%_dhcpclient.admin.evtx
+start /b wevtutil epl Microsoft-Windows-DHCP-Client/Operational %computername%_dhcpclient.operational.evtx
+start /b wevtutil epl Microsoft-Windows-DHCPv6-Client/Admin %computername%_dhcpclient6.admin.evtx
+start /b wevtutil epl Microsoft-Windows-DHCPv6-Client/Operational %computername%_dhcpclient6.operational.evtx
+start /b wevtutil epl "Microsoft-Windows-Windows Defender/Operational" %computername%_defender.operational.evtx
+start /b wevtutil epl "Microsoft-Windows-Windows Firewall With Advanced Security/Firewall" %computername%_advfirewall.firewall.evtx
+start /b wevtutil epl "Microsoft-Windows-Windows Firewall With Advanced Security/FirewallVerbose" %computername%_advfirewall.firewallverbose.evtx
+start /b wevtutil epl Microsoft-Windows-Hyper-V-Hypervisor-Admin %computername%_hyperv.admin.evtx
+start /b wevtutil epl Microsoft-Windows-Hyper-V-Hypervisor-Operational %computername%_hyperv.operational.evtx
+start /b wevtutil epl Microsoft-Windows-WinRM/Operational %computername%_winrm.operational.evtx
 
 timeout 10
 
@@ -119,11 +153,25 @@ sc query > %computername%_services.sc.txt
 net start > %computername%_services.net.txt
 powershell.exe -c "Get-CimInstance Win32_service | Export-Csv %computername%_services.txt"
 
-echo * Prefetch
-start /b copy c:\windows\prefetch\*.pf prefetch >nul
+echo * Repository
+mkdir Repository
+copy C:\Windows\System32\wbem\Repository\* Repository >nul
 
-echo * Repository (objects.dat)
-copy C:\Windows\System32\wbem\Repository\OBJECTS.DATA %computername%_repository.objects.data >nul
+echo * WDI
+mkdir WDI
+copy C:\Windows\System32\WDI\LogFiles\* WDI >nul
+
+echo * WMI
+mkdir WMI
+copy C:\Windows\System32\LogFiles\WMI\* WMI >nul
+
+echo * Setupapi
+mkdir Setupapi
+copy C:\Windows\INF\setupapi*.log Setupapi >nul
+
+echo * Prefetch
+mkdir Prefetch
+copy c:\windows\prefetch\*.pf prefetch >nul
 
 echo * Mountvol Drivers
 mountvol > %computername%_drives.txt
