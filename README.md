@@ -1,16 +1,9 @@
-.____          .____    ._____________ 
-|    |    ____ |    |   |   \______   \
-|    |   /  _ \|    |   |   ||       _/
-|    |__(  <_> )    |___|   ||    |   \
-|_______ \____/|_______ \___||____|_  /
-        \/             \/           \/ 
-
-QUICKSTART: Get and use the "LOLIR_2025.bat" file. The other one is just there for other reasons (as in creation time timestamp).
-
 # lolIR
 **lolIR - Living Of the Land Incident Response**
 
-A live response script for Windows without any dependencies or tool requirements.
+QUICKSTART: Get and use the "LOLIR_2025.bat" file. The other one is just there for other reasons (as in creation time timestamp).
+
+WHAT IS THIS? It is a live response script for Windows without any dependencies or tool requirements.
 
 It is common to use lolbins to do intrusions, so i thought, what lolbins are there to do Incident Response?
 And lolIR was born. This is basically an *"i'm bored and want to do something"*-project.
@@ -49,7 +42,7 @@ And lolIR was born. This is basically an *"i'm bored and want to do something"*-
 * Shares
 * SecEdit configuration
 
-Latest version (2025) also include these source:
+**Latest version (2025) also include these source:**
 * WiFi config
 * Log source: Bitsclient (Text and EVTX)
 * Log source: TerminalServer: Remote, Local and RDPClient (Text and EVTX)
