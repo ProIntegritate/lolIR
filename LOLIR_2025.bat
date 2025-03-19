@@ -6,7 +6,6 @@ echo y | del timestamp.txt
 
 mkdir LOLIR_%computername%_%timestamp%
 cd LOLIR_%computername%_%timestamp%
-mkdir prefetch
 cls
 color cf
 echo --------------------------------------------------------------------------------
@@ -133,7 +132,7 @@ klist tickets > %computername%_kerberos.tickets.txt
 powershell -c "gwmi win32_LogonSession" > %computername%_kerberos.session.tickets.ps.txt
 
 echo * NTDS.DIT (Servers only, like 2019/2022/2025).
-esentutl.exe /y /vss c:\windows\ntds\ntds.dit /d %computername%_ntds.dit
+esentutl.exe /y /vss c:\windows\ntds\ntds.dit /d %computername%_ntds.dit > nul
 
 echo * Current processes (List)
 tasklist /FO LIST > %computername%_processes.short.txt
@@ -272,5 +271,6 @@ attrib \*.* /s > %computername%_filesystem.hierarchy.txt
 cd ..
 echo --------------------------------------------------------------------------------
 echo Ended @ %date%T%time%.
-echo (For some weird reason, this console is now inoperable so just close it)
-rem TODO: powershell -c "Compress-Archive -Path LOLIR_%computername%_%timestamp% -DestinationPath LOLIR_%computername%_%timestamp%.zip"
+echo.
+echo Compressing to .zip file...
+powershell -c "Compress-Archive -Path LOLIR_%computername%_%timestamp% -DestinationPath LOLIR_%computername%_%timestamp%.zip"
