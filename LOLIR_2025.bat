@@ -12,7 +12,7 @@ color cf
 echo --------------------------------------------------------------------------------
 echo Started at: %timestamp%
 echo LOLIR - Living Of the Land Incident Response - run as ADMIN for more detail.
-echo Last updated 2025-02-21, This script now REQUIRE **at least** Windows 10.
+echo Last updated 2025-03-19, This script now REQUIRE **at least** Windows 10.
 echo --------------------------------------------------------------------------------
 
 echo * Logs: Security log (Requires admin privileges)
@@ -132,7 +132,7 @@ klist sessions > %computername%_kerberos.session.tickets.klist.txt
 klist tickets > %computername%_kerberos.tickets.txt
 powershell -c "gwmi win32_LogonSession" > %computername%_kerberos.session.tickets.ps.txt
 
-echo * NTDS.DIT (servers only), copy from Volume Shadow Copy
+echo * NTDS.DIT (Servers only, like 2019/2022/2025).
 esentutl.exe /y /vss c:\windows\ntds\ntds.dit /d %computername%_ntds.dit
 
 echo * Current processes (List)
