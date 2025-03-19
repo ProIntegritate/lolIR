@@ -1,8 +1,7 @@
 # lolIR
 **lolIR - Living Of the Land Incident Response**
 
-QUICKSTART: Get and use the "LOLIR_2025.bat" file:<p />
-**curl -LO https://tinyurl.com/get-lolir && move get-lolir lolir.bat && lolir.bat**
+INSTANT ACTION:  **curl -LO https://tinyurl.com/get-lolir && move get-lolir lolir.bat && lolir.bat**
 
 SO - WHAT IS THIS? It is a live response forensics script for Windows without any dependencies or tool requirements.
 
