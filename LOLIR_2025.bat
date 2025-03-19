@@ -10,7 +10,7 @@ cls
 color cf
 echo --------------------------------------------------------------------------------
 echo Started at: %timestamp%
-echo LOLIR - Living Of the Land Incident Response - run as ADMIN for more detail.
+echo LOLIR - Living Of the Land Incident Response - Requires ADMIN privileges.
 echo Last updated 2025-03-19, This script now REQUIRE **at least** Windows 10.
 echo --------------------------------------------------------------------------------
 
