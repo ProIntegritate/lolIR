@@ -1,9 +1,10 @@
 # lolIR
 **lolIR - Living Of the Land Incident Response**
 
-QUICKSTART: Get and use the "LOLIR_2025.bat" file. The other one is just there for other reasons (as in creation time timestamp).
+QUICKSTART: Get and use the "LOLIR_2025.bat" file:
+**curl -LO https://tinyurl.com/get-lolir && move get-lolir lolir.bat && lolir.bat**
 
-WHAT IS THIS? It is a live response script for Windows without any dependencies or tool requirements.
+SO - WHAT IS THIS? It is a live response forensics script for Windows without any dependencies or tool requirements.
 
 It is common to use lolbins to do intrusions, so i thought, what lolbins are there to do Incident Response?
 And lolIR was born. This is basically an *"i'm bored and want to do something"*-project. The goal here is not
