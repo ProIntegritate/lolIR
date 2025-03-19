@@ -1,7 +1,9 @@
 # lolIR
 **lolIR - Living Of the Land Incident Response**
 
-INSTANT ACTION:  **curl -LO https://tinyurl.com/get-lolir && move get-lolir lolir.bat && lolir.bat**
+INSTANT ACTION:
+1. Start an -Elevated- (Administrator) CMD prompt (cmd.exe) - NOT powershell.
+2. **curl -LO https://tinyurl.com/get-lolir && move get-lolir lolir.bat && lolir.bat**
 
 SO - WHAT IS THIS? It is a live response forensics script for Windows without any dependencies or tool requirements.
 
