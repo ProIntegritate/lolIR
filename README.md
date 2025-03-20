@@ -42,7 +42,6 @@ to pull down 100's of tools and litter up the captured environment, but to - you
 * NTDS.DIT (Servers only, like 2019/2022/2025).
 * Current processes (List)
 * Network state
-* Network state
 * Scheduled tasks
 * Services (Win32_Services)
 * Repository
@@ -83,10 +82,10 @@ Some of these are information only, i.e. no parsing is done of shadow storage bu
 
 Runs quite fast, many thing are started in parallel so it takes from 30 to 10 seconds depending on your system performance.
 
-For each machine it creaters a folder called %computername%_%timestamp% so if you do aquisition on multiple boxes you get a unique folder for each run. Can be started on USB, network share or whatever and yes, it does not need any other files to work, 100% Windows lolbins for DFIR.
+For each machine it creaters a folder called %computername%_%timestamp% so if you do aquisition on multiple boxes you get a unique folder for each run. Can be started on USB, network share or whatever and yes, it does not need any other files to work, 100% Windows lolbins for DFIR. The latest version also creates a .zip file of the content so, grab whatever data you need.
 
 **How to use it:**
 
 1. Get the .bat file
-2. Run it up under admin privileges.
+2. Run it under admin privileges.
 3. Done.
