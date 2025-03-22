@@ -80,7 +80,7 @@ to pull down 100's of tools and litter up the captured environment, but to - you
 
 Some of these are information only, i.e. no parsing is done of shadow storage but it reports if storage is still intact, and some files need to be parsed separately, like prefetch files and repository.
 
-Runs quite fast, many thing are started in parallel so it takes from 30 to 10 seconds depending on your system performance.
+Runs in about 2-3 minutes, many thing are started in parallel, but it also depends on the systems performance.
 
 For each machine it creaters a folder called %computername%_%timestamp% so if you do aquisition on multiple boxes you get a unique folder for each run. Can be started on USB, network share or whatever and yes, it does not need any other files to work, 100% Windows lolbins for DFIR. The latest version also creates a .zip file of the content so, grab whatever data you need.
 
