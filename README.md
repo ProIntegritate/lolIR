@@ -30,6 +30,7 @@ to pull down 100's of tools and litter up the captured environment, but to - you
 * Logs: AdvFirewall
 * Logs: Hyper-V
 * Logs: WinRM
+* Logs: SSH-Operational
 * Dump registry: HKLM to text
 * Dump registry: HKCU to text
 * Dump registry: HKU to text
@@ -75,6 +76,8 @@ to pull down 100's of tools and litter up the captured environment, but to - you
 * Installed printers
 * Installed software
 * User Recent files (all user folders)
+* Appdata: Powershell 
+* Userdata .ssh known
 * Filesystem timestamps
 * Filesystem hierarchy
 
