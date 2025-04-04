@@ -70,6 +70,9 @@ start /b wevtutil qe /f:text Microsoft-Windows-Hyper-V-Hypervisor-Operational > 
 echo * Logs: WinRM
 start /b wevtutil qe /f:text Microsoft-Windows-WinRM/Operational > %computername%_winrm.operational.log
 
+echo * Logs: SSH-Operational
+start /b wevtutil qe "OpenSSH/Operational" > %computername%_SSH.operational.log
+
 timeout 10
 
 echo * Dumping .evtx files of the same sources (above).
@@ -95,6 +98,7 @@ start /b wevtutil epl "Microsoft-Windows-Windows Firewall With Advanced Security
 start /b wevtutil epl Microsoft-Windows-Hyper-V-Hypervisor-Admin %computername%_hyperv.admin.evtx
 start /b wevtutil epl Microsoft-Windows-Hyper-V-Hypervisor-Operational %computername%_hyperv.operational.evtx
 start /b wevtutil epl Microsoft-Windows-WinRM/Operational %computername%_winrm.operational.evtx
+start /b wevtutil epl "OpenSSH/Operational" %computername%_ssh.operational.evtx
 
 timeout 10
 
@@ -190,12 +194,6 @@ netsh advfirewall firewall show rule name=all > %computername%_firewall.txt
 echo * Startup
 powershell.exe -c "Get-CimInstance Win32_StartupCommand | Export-Csv %computername%_startup.txt"
 
-echo * Executables in world/user writeable, non-standard locations. (This can take a few minutes)
-start /b attrib c:\ProgramData\*.exe /s | find /i ".exe" > %computername%_folder-programdata.exe.log
-start /b attrib c:\users\*.exe /s | find /i ".exe" > %computername%_folder-users.exe.log
-
-timeout 10
-
 echo * Hosts
 copy c:\Windows\System32\drivers\etc\hosts %computername%_hosts.txt
 
@@ -260,6 +258,24 @@ for /f %%f in ('dir /B /AD %public%\..') do (
 	echo %public%\..\%%f\AppData\Roaming\Microsoft\Windows\Recent\
 	powershell -c "Compress-Archive -CompressionLevel Optimal -Path C:\Users\%%f\AppData\Roaming\Microsoft\Windows\Recent\ -DestinationPath %computername%_recent_%%f.zip" > nul
 )
+
+echo * Appdata: Powershell 
+for /f %%f in ('dir /B /AD %public%\..') do (
+	echo %public%\..\%%f\AppData\Roaming\Microsoft\Windows\PowerShell\PSReadLine\
+	powershell -c "Compress-Archive -CompressionLevel Optimal -Path C:\Users\%%f\AppData\Roaming\Microsoft\Windows\PowerShell\PSReadLine\ -DestinationPath %computername%_appdata_powershell_%%f.zip" > nul
+)
+
+echo * Userdata .ssh known*
+for /f %%f in ('dir /B /AD %public%\..') do (
+	echo %public%\..\%%f\.ssh\*
+	powershell -c "Compress-Archive -CompressionLevel Optimal -Path C:\Users\%%f\.ssh\known_hosts -DestinationPath %computername%_ssh.knownhosts_%%f.zip" > nul
+)
+
+echo * Executables in world/user writeable, non-standard locations. (This can take a few minutes)
+start /b attrib c:\ProgramData\*.exe /s | find /i ".exe" > %computername%_folder-programdata.exe.log
+start /b attrib c:\users\*.exe /s | find /i ".exe" > %computername%_folder-users.exe.log
+
+timeout 10
 
 echo.
 
